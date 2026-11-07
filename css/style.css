@@ -301,6 +301,7 @@ p + p { margin-top: 16px; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .photo img { animation: none !important; }
   .btn { transition: none; }
+  .ig-post { transition: none; }
   #cursor-glow { display: none; }
 }
 
@@ -412,14 +413,23 @@ p + p { margin-top: 16px; }
     position: relative; top: auto; grid-template-columns: 1fr; gap: 28px; min-height: 0; padding: 32px 24px; box-shadow: none;
   }
   .story-media { justify-content: flex-start; }
+  .story-stack .story.instagram { grid-template-columns: 1fr; }   /* beats the two-column rule below the media query */
 }
-.ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+/* The three posts are shown whole, at Instagram's portrait shape (3:4), fanned out like
+   a hand of cards: the middle one upright and in front, the outer two leaning away and
+   tucked slightly behind it. Hovering a post straightens and lifts it. */
+.story.instagram { grid-template-columns: 1.15fr 1fr; }   /* a little more room for the fan */
+.ig-grid { display: flex; justify-content: center; align-items: flex-end; padding: 10px 0 6px; }
 .ig-post {
-  display: block; aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden;
+  display: block; width: 37%; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden;
   background: var(--bg); border: 1px solid var(--line);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s ease, border-color 0.35s ease;
 }
-.ig-post:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.3); }
+.ig-post:nth-child(1) { transform: rotate(-7deg) translateY(14px); margin-right: -7%; }
+.ig-post:nth-child(2) { width: 41%; position: relative; z-index: 1; }
+.ig-post:nth-child(3) { transform: rotate(7deg) translateY(14px); margin-left: -7%; }
+.ig-post:hover { transform: translateY(-8px) scale(1.04); border-color: rgba(255,255,255,0.35); z-index: 2; }
 .ig-post img { width: 100%; height: 100%; object-fit: cover; }
 .ig-post.missing img { display: none; }
 .ig-post.missing::after {

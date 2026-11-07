@@ -71,8 +71,8 @@ The three small thumbnails inside the Instagram card (section `5. WRITING AND OU
 
 1. On Instagram, open the post, tap the three dots, choose Copy link, and paste it into
    the `href="..."` of the first `<a class="ig-post">`.
-2. Save the post's cover image, convert it to a square WebP about 800 px wide, and save it
-   as `images/ig-1.webp`. Repeat for `ig-2` and `ig-3`.
+2. Save the post's cover image, convert it to a portrait WebP of 480 by 640 px (the 3:4 shape
+   Instagram uses), and save it as `images/ig-1.webp`. Repeat for `ig-2` and `ig-3`.
 
 Instagram does not let a plain website fetch posts automatically without an app token
 that would have to be kept secret, so this manual list is the simple, reliable version.
