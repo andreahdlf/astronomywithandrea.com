@@ -1,5 +1,20 @@
 # Publishing astronomywithandrea.com on GitHub Pages
 
+## Where things stand (7 November 2026)
+
+Steps 1, 2 and 4 below are done:
+- The site lives at https://github.com/andreahdlf/astronomywithandrea.com (branch `main`).
+- GitHub Pages is switched on and the custom domain astronomywithandrea.com is set.
+- The domain is registered at Porkbun. Its DNS still points at Porkbun's parking page,
+  so step 3 (the DNS records) is the one thing left, and only the Porkbun account holder
+  can do it. In Porkbun: Domain Management, then the DNS link next to the domain. Delete
+  the parking A records for the bare domain and the parking CNAME for `www`, then add the
+  records in step 3 with andreahdlf = andreahdlf. After that, come back to step 4.3
+  (Enforce HTTPS).
+
+Publishing an update later is just: edit the files, then in Terminal inside the site folder
+`git add -A`, `git commit -m "what changed"`, `git push`. The live site updates within a minute.
+
 One-off setup. Takes about twenty minutes plus DNS waiting time.
 
 ## 1. Put the site on GitHub
@@ -14,14 +29,14 @@ One-off setup. Takes about twenty minutes plus DNS waiting time.
        git add .
        git commit -m "First version of the site"
        git branch -M main
-       git remote add origin https://github.com/YOUR-USERNAME/astronomywithandrea.com.git
+       git remote add origin https://github.com/andreahdlf/astronomywithandrea.com.git
        git push -u origin main
 
 ## 2. Switch on GitHub Pages
 
 1. On GitHub, open the repository, then Settings, then Pages (left menu).
 2. Under "Build and deployment", Source: "Deploy from a branch". Branch: `main`, folder `/ (root)`. Save.
-3. After a minute the page shows "Your site is live at https://YOUR-USERNAME.github.io/astronomywithandrea.com/".
+3. After a minute the page shows "Your site is live at https://andreahdlf.github.io/astronomywithandrea.com/".
    Check that it loads. The galaxy will look right; the custom domain comes next.
 
 ## 3. Point the domain at GitHub (DNS)
@@ -40,7 +55,7 @@ bare domain first, and any existing CNAME for `www`.
 | AAAA | `@` | `2606:50c0:8001::153` | |
 | AAAA | `@` | `2606:50c0:8002::153` | |
 | AAAA | `@` | `2606:50c0:8003::153` | |
-| CNAME | `www` | `YOUR-USERNAME.github.io` | |
+| CNAME | `www` | `andreahdlf.github.io` | |
 
 Notes:
 - `@` means the bare domain (astronomywithandrea.com). Some registrars want it left blank instead.
